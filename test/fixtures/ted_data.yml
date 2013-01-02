@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mtu: MyString
+  mtype: MyString
+  cumtime: 2013-01-02 15:27:31
+  watts: 1
+
+two:
+  mtu: MyString
+  mtype: MyString
+  cumtime: 2013-01-02 15:27:31
+  watts: 1
