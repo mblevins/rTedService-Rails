@@ -31,7 +31,7 @@ class TedpostserverController < ApplicationController
 	logger.debug "postadata_uri=#{postdata_uri}"
 	@postdata_urlpath = postdata_uri.path
 	@postdata_host= postdata_uri.host
-	@postdata_port= "	3000";
+	@postdata_port= "3000"
 	
 	render :template => 'tedpostserver/init.xml.erb'
     logger.debug "raw-out=#{ response.body }"
@@ -59,9 +59,10 @@ class TedpostserverController < ApplicationController
     	logger.debug "mtu= #{ mtuID }, type= #{ mtuType }"
       	cums=mtu.xpath("//cumulative")
       	cums.each do |cum|
-      	    logger.debug "timestamp= #{ cum['timestamp'] }, watts= #{ cum['watts'] }"
+  	cumtime = Time.at( cum['timestamp'].to_i )
+      	    logger.debug "timestamp= #{ cumtime }, watts= #{ cum['watts'] }"
 			ted_datum = TedDatum.new do |t|
-				t.cumtime = cum['timestamp']
+				t.cumtime = cumtime;
 				t.mtu = mtuID
 				t.mtype = mtuType
 				t.watts = cum['watts']
