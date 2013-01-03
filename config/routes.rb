@@ -1,8 +1,10 @@
 RTedServiceRails::Application.routes.draw do
   resources :ted_data
 
-
   get "home/index"
+  
+  post "tedpostserver/init"
+  post "tedpostserver/postdata"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,4 +62,6 @@ RTedServiceRails::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  match 'tedpostserver/init/' => 'tedpostserver#init', :via => :post, :defaults => {:format => 'xml'}
+  match 'tedpostserver/postdata/' => 'tedpostserver#postdata', :via => :post, :defaults => {:format => 'xml'}
 end
