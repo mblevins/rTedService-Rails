@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/nohup.out
 
 # Ignore DB files
 db/.DS_Store
