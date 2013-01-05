@@ -1,0 +1,13 @@
+<ted5000  GWID="200000" auth="TedPassw0rd22"> 
+  <MTU ID="100000" type="0"> 
+    <cumulative timestamp="123456000"  watts="10000" rate="0.12345"/> 
+    <cumulative timestamp="123456060"  watts="10005" rate="0.12345"/> 
+    <cumulative timestamp="123456120"  watts="10010" rate="0.12345"/> 
+  </MTU> 
+  <MTU ID="100001" type="0"> 
+     <cumulative timestamp="123456000"  watts="10000" rate="0.12345"/> 
+     <cumulative timestamp="123456060"  watts="10005" rate="0.12345"/> 
+     <cumulative timestamp="123456120"  watts="10010" rate="0.12345"/> 
+  </MTU> 
+</ted5000>
+
