@@ -2,7 +2,8 @@ class TedDataController < ApplicationController
   # GET /ted_data
   # GET /ted_data.json
   def index
-    @ted_data = TedDatum.all
+    TedDatum.page(params[:page]).order('created_at DESC')
+    @ted_data = TedDatum.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
