@@ -1,7 +1,10 @@
 RTedServiceRails::Application.routes.draw do
-  resources :ted_data
+  get "dayhist_updater/tedhist"
+
+  resources :ted_data, :day_hists
 
   get "home/index"
+  get "hist_updater/autoupdate"
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
@@ -64,4 +67,5 @@ RTedServiceRails::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   match 'tedpostserver/init/' => 'tedpostserver#init', :via => :post, :defaults => {:format => 'xml'}
   match 'tedpostserver/postdata/' => 'tedpostserver#postdata', :via => :post, :defaults => {:format => 'xml'}
+  match 'dayhist_updater/autoupdate' => 'dayhist_updater#autoupdate', :via => :get
 end

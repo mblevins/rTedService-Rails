@@ -1,4 +1,8 @@
 <h1>Home#index</h1>
 
+<%= link_to "Daily Records", day_hists_path %>
 <%= link_to "Data Records", ted_data_path %>
+<%= link_to "Auto update", :action => 'autoupdate', :controller => 'dayhist_updater'  %>
+
+
 

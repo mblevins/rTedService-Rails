@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: 2013-01-06
+  mtu: MyString
+  watts: 1
+
+two:
+  day: 2013-01-06
+  mtu: MyString
+  watts: 1

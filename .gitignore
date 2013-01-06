@@ -13,8 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/nohup.out
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
 
-# Ignore DB files
-db/.DS_Store
-test/.DS_Store
