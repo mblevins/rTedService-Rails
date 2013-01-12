@@ -48,3 +48,4 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'therubyracer'
 gem 'will_paginate'
+

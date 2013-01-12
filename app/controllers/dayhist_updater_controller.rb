@@ -1,5 +1,7 @@
 class DayhistUpdaterController < ApplicationController
   
+   include DayhistUpdaterHelper
+   
    def autoupdate
 
      if params[:day] == nil then
@@ -18,13 +20,13 @@ class DayhistUpdaterController < ApplicationController
 
      $all_mtus.each do |mtu|
        logger.debug "mtu = #{mtu}"
-       day_hist_result = DayHist.where("day = ? and mtu = ?", day, mtu)
+       day_hist_result = DayHist.where("day = ? and mtu = ?", day, mtu).order( :day ).reverse_order
        case day_hist_result.length
         when 0
           day_hist = DayHist.new do |d|
             d.day = day
             d.mtu = mtu
-            d.watts = 23
+            d.watts = getTotalWattage( day, mtu)
           end
           if day_hist.save then
             numSaved = numSaved + 1

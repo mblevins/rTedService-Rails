@@ -49,6 +49,7 @@ class TedpostserverController < ApplicationController
       raise "Doesn't look like my token"
     end
     logger.debug "doc= #{ doc }"
+    # todo: find a better way of doing this. I ran into a problem with xpath in a result set
     mtu_idx = 1
     while (mtuSet = doc.xpath("//MTU[#{mtu_idx}]")) do
       break if mtuSet.length == 0
