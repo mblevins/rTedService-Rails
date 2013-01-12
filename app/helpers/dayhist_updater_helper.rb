@@ -21,7 +21,7 @@ module DayhistUpdaterHelper
     when 1
      watts = - (t2.watts - t1.watts);
     else
-     logger.warn "unexpected m_type for #{day}, #{mtu}: type=#{t.mtype}"
+     logger.warn "unexpected m_type for #{day}, #{mtu}: type=#{t1.mtype}"
    end
    return watts;
   end
