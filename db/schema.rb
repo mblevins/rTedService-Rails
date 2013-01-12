@@ -30,4 +30,6 @@ ActiveRecord::Schema.define(:version => 20130106171222) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "ted_data", ["cumtime"], :name => "ctidx"
+
 end

@@ -16,9 +16,9 @@ module DayhistUpdaterHelper
   
     # assume t1 and t2 are the same mtype!
     case t1.mtype  
-    when 0, 2, 3, 5
+    when '0', '2', '3', '5'
      watts = t2.watts - t1.watts;
-    when 1
+    when '1'
      watts = - (t2.watts - t1.watts);
     else
      logger.warn "unexpected m_type for #{day}, #{mtu}: type=#{t1.mtype}"
