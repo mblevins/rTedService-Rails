@@ -1,4 +1,6 @@
 RTedServiceRails::Application.routes.draw do
+  get "solar_img/index"
+
   get "dayhist_updater/tedhist"
 
   get "home/index"
