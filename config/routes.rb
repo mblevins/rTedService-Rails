@@ -7,6 +7,7 @@ RTedServiceRails::Application.routes.draw do
   get "hist_updater/autoupdate"
   get "ted_data/index"
   get "day_hists/index"
+  get "solar_img/index"
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"

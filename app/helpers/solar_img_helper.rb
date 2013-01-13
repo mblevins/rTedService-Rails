@@ -1,0 +1,2 @@
+module SolarImgHelper
+end
