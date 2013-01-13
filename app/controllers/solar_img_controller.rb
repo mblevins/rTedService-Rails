@@ -42,7 +42,6 @@ class SolarImgController < ApplicationController
            "\&chbh=a,2,12" +
            "\&chs=300x225" +
            "\&cht=bvg" +
-           "\&chco=A2C180,3D7930" +
            "\&chds=-10,40,-10,40" +
            "\&chd=t:#{solarWatts.join(',')}|#{pgeWatts.join(',')}"
           
