@@ -44,8 +44,7 @@ class SolarImgController < ApplicationController
            "\&cht=bvg" +
            "\&chco=A2C180,3D7930" +
            "\&chds=-10,40,-10,40" +
-           "\&chd=t:#{solarWatts.join(',')}|#{pgeWatts.join(',')}" +
-           "\&chtt=Solar+%26+Power+Meter" 
+           "\&chd=t:#{solarWatts.join(',')}|#{pgeWatts.join(',')}"
           
            
       respond_to do |format|
