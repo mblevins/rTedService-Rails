@@ -1,16 +1,16 @@
 <h2>Power by Day</h2>
-<table class=table>
+<table class=table style="width:80%">
   <tr>
-    <th>Date</th>
-    <th>Monitor</th>
-    <th>Wattage</th>
+    <th style="text-align: right">Date</th>
+    <th style="text-align: right">Monitor</th>
+    <th style="text-align: right">Wattage</th>
   </tr>
 
 <% @day_hists.each do |day_hist| %>
   <tr>
-    <td><%= day_hist.day %></td>
-    <td><%= mtu_to_string( day_hist.mtu ) %></td>
-    <td><%= day_hist.watts %></td>
+    <td style="text-align: right"><%= day_hist.day %></td>
+    <td style="text-align: right"><%= mtu_to_string( day_hist.mtu ) %></td>
+    <td style="text-align: right"><%= number_with_precision( day_hist.watts / 1000, :precision => 1) %> kWh</td>
   </tr>
 <% end %>
 </table>
