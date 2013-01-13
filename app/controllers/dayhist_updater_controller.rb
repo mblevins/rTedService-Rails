@@ -5,7 +5,8 @@ class DayhistUpdaterController < ApplicationController
    def autoupdate
 
      if params[:day] == nil then
-       time = Time.now
+      # easier to default this way, then a midnight cronjob calculates yesterday's date
+       time = Time.now - 60*60*24
        day = time.strftime("%Y-%m-%d")
      else
        time = Time.parse(params[:day])

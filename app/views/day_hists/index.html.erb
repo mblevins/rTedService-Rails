@@ -1,10 +1,9 @@
-<h1>Listing day_hists</h1>
-
-<table>
+<h2>Power by Day</h2>
+<table class=table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Date</th>
+    <th>Monitor</th>
+    <th>Wattage</th>
   </tr>
 
 <% @day_hists.each do |day_hist| %>
@@ -12,14 +11,8 @@
     <td><%= day_hist.day %></td>
     <td><%= mtu_to_string( day_hist.mtu ) %></td>
     <td><%= day_hist.watts %></td>
-    <td><%= link_to 'Show', day_hist %></td>
-    <td><%= link_to 'Edit', edit_day_hist_path(day_hist) %></td>
-    <td><%= link_to 'Destroy', day_hist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-<%= will_paginate @day_hist %>
+<%= will_paginate @day_hists, :renderer => BootstrapPagination::Rails %>
 
-<br />
-
-<%= link_to 'New Day hist', new_day_hist_path %>
