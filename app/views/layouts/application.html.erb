@@ -22,8 +22,8 @@
 			<div class="span2">
 				<ul class="nav nav-list">
 					<li><%= link_to "Home", :action => 'index', :controller => 'home'  %></li>
-					<li><%= link_to "Daily Records", day_hists_path %></li>
-					<li><%= link_to "Raw Data Records", ted_data_path %></li>
+					<li><%= link_to "Daily Records", :action => 'index', :controller => 'day_hists'   %></li>
+					<li><%= link_to "Raw Data Records", :action => 'index', :controller => 'ted_data'   %></li>
 				</ul>
 			</div>
     		<div class="span10">

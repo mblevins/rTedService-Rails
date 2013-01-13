@@ -1,10 +1,10 @@
 RTedServiceRails::Application.routes.draw do
   get "dayhist_updater/tedhist"
 
-  resources :ted_data, :day_hists
-
   get "home/index"
   get "hist_updater/autoupdate"
+  get "ted_data/index"
+  get "day_hists/index"
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
