@@ -1,4 +1,6 @@
 RTedServiceRails::Application.routes.draw do
+  get "water_img/index"
+
   get "solar_img/index"
 
   get "dayhist_updater/tedhist"
