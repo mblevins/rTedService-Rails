@@ -11,6 +11,7 @@ class SolarImgController < ApplicationController
     
     pgeWatts = Array.new( daysToDisplay )
     solarWatts = Array.new( daysToDisplay )
+    netWatts = Array.new( daysToDisplay )
     dayLabel = Array.new( daysToDisplay )
     
     # Since we're reverse ordered, we actually do the strings backward for the graph
@@ -18,9 +19,9 @@ class SolarImgController < ApplicationController
     recIdx = 0
     dayHistsResult.each do |dayHist|
       if (dayHist.mtu == $pge_mtu) then
-        pgeWatts[dayIdx] = (dayHist.watts / 1000).to_s
+        pgeWatts[dayIdx] = (dayHist.watts / 1000)
       elsif (dayHist.mtu == $solar_mtu) then
-        solarWatts[dayIdx] = (dayHist.watts / 1000).to_s
+        solarWatts[dayIdx] = (dayHist.watts / 1000)
       end
       dayLabel[dayIdx] = "#{dayHist.day.month}/#{dayHist.day.day}"
       recIdx = recIdx + 1
@@ -30,6 +31,15 @@ class SolarImgController < ApplicationController
       end
     end
     
+    dayIdx = 0
+    while (dayIdx < daysToDisplay) do
+      netWatts[dayIdx] = (pgeWatts[dayIdx] + solarWatts[dayIdx]).to_s
+      pgeWatts[dayIdx] = pgeWatts[dayIdx].to_s
+      solarWatts[dayIdx] = solarWatts[dayIdx].to_s
+      dayIdx = dayIdx + 1
+    end
+    logger.debug "pgeWatts=#{pgeWatts}, solarWatts=#{solarWatts}, netWatts=#{netWatts}"
+    
     # https://developers.google.com/chart/image/docs/gallery/bar_charts
       
       @liveGraphURL =
@@ -37,13 +47,13 @@ class SolarImgController < ApplicationController
            "\?chxl=0:|-10|0|10|20|30|40|1:|#{dayLabel.join('|')}" + 
            "\&chxr=0,-10,40|1,1,100" +
            "\&chxs=0,676767,11.5,0,l,676767" + 
-           "\&chco=008000,FF0000" + 
+           "\&chco=008000,FF0000,666666" + 
            "\&chxt=y,x" +
-           "\&chbh=a,2,12" +
+           "\&chbh=a,1,12" +
            "\&chs=300x225" +
            "\&cht=bvg" +
-           "\&chds=-10,40,-10,40" +
-           "\&chd=t:#{solarWatts.join(',')}|#{pgeWatts.join(',')}"
+           "\&chds=-10,40,-10,40,-10,40" +
+           "\&chd=t:#{solarWatts.join(',')}|#{pgeWatts.join(',')}|#{netWatts.join(',')}"
           
            
       respond_to do |format|
