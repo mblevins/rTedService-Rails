@@ -48,10 +48,12 @@ class DayHistRssController < ApplicationController
         solarWatts[dayIdx] = solarWatts[dayIdx].to_s
         waterWatts[dayIdx] = waterWatts[dayIdx].to_s
         @descriptions[dayIdx] = "\n" +
-          "Net Power Used (PGE + Solar): #{netWatts[dayIdx]} kWh\n" +
-          "PGE delivered: #{pgeWatts[dayIdx]} kWh\n" +
-          "Solar generated: #{solarWatts[dayIdx]} kWh\n" +
-          "Water used: ~ #{waterWatts[dayIdx]} kWh\n"
+          "&lt;ul&gt;" + 
+          "&lt;li&gt;Net Power Used (PGE + Solar): #{netWatts[dayIdx]} kWh\n" +
+          "&lt;li&gt;PGE delivered: #{pgeWatts[dayIdx]} kWh\n" +
+          "&lt;li&gt;Solar generated: #{solarWatts[dayIdx]} kWh\n" +
+          "&lt;li&gt;Water used: ~ #{waterWatts[dayIdx]} kWh\n" +
+          "&lt;/ul&gt;"
         dayIdx = dayIdx + 1
       end
 
