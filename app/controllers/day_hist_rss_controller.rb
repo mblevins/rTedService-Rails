@@ -16,6 +16,7 @@ class DayHistRssController < ApplicationController
       waterWatts = Array.new( @daysToDisplay )
       @descriptions = Array.new( @daysToDisplay )
       @dayLabel = Array.new( @daysToDisplay )
+      @rfc822Label = Array.new( @daysToDisplay )
 
       # Since we're reverse ordered, we actually do the strings backward for the graph
       dayIdx = @daysToDisplay - 1
@@ -33,6 +34,7 @@ class DayHistRssController < ApplicationController
             waterWatts[dayIdx] = (dayHist.watts / 1000).to_s
         end
         @dayLabel[dayIdx] = "#{dayHist.day.month}/#{dayHist.day.day}/#{dayHist.day.year}"
+        @rfc822Label[dayIdx] = dayHist.day.to_formatted_s( :rfc822 )
         recIdx = recIdx + 1
         if (recIdx == $all_mtus.length) then
           dayIdx = dayIdx - 1
@@ -48,12 +50,12 @@ class DayHistRssController < ApplicationController
         solarWatts[dayIdx] = solarWatts[dayIdx].to_s
         waterWatts[dayIdx] = waterWatts[dayIdx].to_s
         @descriptions[dayIdx] = "\n" +
-          "&lt;ul&gt;" + 
-          "&lt;li&gt;Net Power Used (PGE + Solar): #{netWatts[dayIdx]} kWh\n" +
-          "&lt;li&gt;PGE delivered: #{pgeWatts[dayIdx]} kWh\n" +
-          "&lt;li&gt;Solar generated: #{solarWatts[dayIdx]} kWh\n" +
-          "&lt;li&gt;Water used: ~ #{waterWatts[dayIdx]} kWh\n" +
-          "&lt;/ul&gt;"
+          "<ul>\n" + 
+          "<li>Net Power Used (PGE + Solar): #{netWatts[dayIdx]} kWh\n" +
+          "<li>PGE delivered: #{pgeWatts[dayIdx]} kWh\n" +
+          "<li>Solar generated: #{solarWatts[dayIdx]} kWh\n" +
+          "<li>Water used: ~ #{waterWatts[dayIdx]} kWh\n" +
+          "</ul>"
         dayIdx = dayIdx + 1
       end
 

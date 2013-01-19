@@ -10,18 +10,20 @@
 	<channel>
 		<title>Silver Fiddle Power</title>
 		<description></description>
+		<link>http://www.wabbitinc.com</link>
 		<language>en-US</language>
 		<sy:updatePeriod>hourly</sy:updatePeriod>
 		<sy:updateFrequency>1</sy:updateFrequency>
       	<% 	dayIdx = 0; 
       		while (dayIdx < @daysToDisplay) do;
 	 		day = @dayLabel[dayIdx]
+			dayRfc822 = @rfc822Label[dayIdx]
 			description = @descriptions[dayIdx]
 		%>
 		<item>
 			<title>Data for <%= day %></title>
-			<pubDate><%= day %></pubDate>
-			<guid><%= day %></guid>
+			<pubDate><%= dayRfc822 %></pubDate>
+			<guid>http://www.wabbitinc.com/power/<%= day %></guid>
 			<description><%= description %></description>
 		</item>
 		<% 	dayIdx = dayIdx + 1
