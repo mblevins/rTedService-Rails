@@ -34,7 +34,7 @@ class DayHistRssController < ApplicationController
             waterWatts[dayIdx] = (dayHist.watts / 1000).to_s
         end
         @dayLabel[dayIdx] = "#{dayHist.day.month}/#{dayHist.day.day}/#{dayHist.day.year}"
-        @rfc822Label[dayIdx] = dayHist.day.to_formatted_s( :rfc822 )
+        @rfc822Label[dayIdx] = dayHist.day.rfc2822
         recIdx = recIdx + 1
         if (recIdx == $all_mtus.length) then
           dayIdx = dayIdx - 1
