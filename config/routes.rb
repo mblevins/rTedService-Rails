@@ -1,4 +1,6 @@
 RTedServiceRails::Application.routes.draw do
+  get "day_hist_rss/index"
+
   get "water_img/index"
 
   get "solar_img/index"
@@ -11,6 +13,7 @@ RTedServiceRails::Application.routes.draw do
   get "day_hists/index"
   get "solar_img/index"
   get "water_img/index"
+  get "day_hist_rss/index"
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
