@@ -50,4 +50,5 @@ gem 'therubyracer'
 gem 'will_paginate'
 gem 'bootstrap-sass', '2.1'
 gem 'will_paginate-bootstrap'
+gem 'devise'
 

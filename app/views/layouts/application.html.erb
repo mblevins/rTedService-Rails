@@ -11,27 +11,43 @@
   </head>
   <body>
 	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="page-header">
-					<h1>Silver Fiddle Power Data</h2>
+        <div class="row-fluid">
+	        <div class="span12">
+			    <div class="page-header">
+				    <h1>Silver Fiddle Power Data</h2>
 				</div>
 			</div>
 		</div>
-		<div class="row-fluid">
+        <div class="row-fluid">
 			<div class="span2">
 				<ul class="nav nav-list">
-					<li><%= link_to "Home", :action => 'index', :controller => 'home'  %></li>
-					<li><%= link_to "Daily Records", :action => 'index', :controller => 'day_hists'   %></li>
-					<li><%= link_to "Raw Data Records", :action => 'index', :controller => 'ted_data'   %></li>
-					<li><%= link_to "Daily Solar Graph (img)", :action => 'index', :controller => 'solar_img'   %></li>
-					<li><%= link_to "Daily Water Graph (img)", :action => 'index', :controller => 'water_img'   %></li>
-					<li><%= link_to "RSS Feed", :action => 'index', :controller => 'day_hist_rss'   %>
+					<li><%= link_to "Home", home_index_path  %></li>
+					<li><%= link_to "Daily Records", day_hists_path  %></li>
+					<li><%= link_to "Raw Data Records", ted_data_path  %></li>
+					<li><%= link_to "Daily Solar Graph (img)", solar_img_index_path  %></li>
+					<li><%= link_to "Daily Water Graph (img)", water_img_index_path   %></li>
+					<li><%= link_to "Admin", admin_index_path  %>
+					<% if user_signed_in? %>
+					    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %>
+					<% else %>
+					    <li><%= link_to "Login", new_user_session_path  %>
+					<% end %>
 				</ul>
 			</div>
     		<div class="span10">
       			<%= yield %>
-    		</div>
+		    </div>
+	    </div>
+		<div class="row-fluid">
+			<div class="span2"></div>
+			<div class="span10">
+			    <% if flash[:alert] %>
+	    	        <div class="alert alert-error"><%= flash[:alert] %></div>
+		        <% end %>
+		        <% if flash[:notice] %>
+		            <div class="alert alert-info"><%= flash[:notice] %></div>
+		        <% end %>
+		    </div>
 		</div>
 	</div>
   </body>

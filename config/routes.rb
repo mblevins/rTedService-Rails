@@ -1,19 +1,19 @@
 RTedServiceRails::Application.routes.draw do
+  
+  get "admin/index"
+
+  devise_for :users
+
   get "day_hist_rss/index"
-
-  get "water_img/index"
-
-  get "solar_img/index"
-
   get "dayhist_updater/tedhist"
-
-  get "home/index"
   get "hist_updater/autoupdate"
-  get "ted_data/index"
-  get "day_hists/index"
-  get "solar_img/index"
-  get "water_img/index"
-  get "day_hist_rss/index"
+  
+  resources :home, :only => [:index]
+  resources :day_hists, :only => [:index]
+  resources :ted_data, :only => [:index]
+  resources :solar_img, :only => [:index]
+  resources :water_img, :only => [:index]
+  resources :admin, :only => [:index]
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
