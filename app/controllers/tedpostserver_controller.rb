@@ -74,7 +74,14 @@ class TedpostserverController < ApplicationController
       end
       mtu_idx = mtu_idx + 1
     end
-  render :nothing => true
+    
+    # update yesterday 
+    
+   # time = Time.now - 60*60*24
+   # day = time.strftime("%Y-%m-%d")
+   # update_day( day )
+     
+     render :nothing => true
   end
   
 end

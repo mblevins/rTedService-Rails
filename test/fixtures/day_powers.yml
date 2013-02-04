@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: 2013-02-03
+  pgeWatts: 1
+  solarWatts: 1
+  waterWatts: 
+
+two:
+  day: 2013-02-03
+  pgeWatts: 1
+  solarWatts: 1
+  waterWatts: 

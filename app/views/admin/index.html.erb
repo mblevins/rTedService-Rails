@@ -1,2 +1,14 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<div class="well">
+<form action=<%=  admin_updateday_path %> >
+<p>Update Day
+<p><input type="date" name="day">
+<p><input type="submit" value="Submit">
+</form>
+</div>
+
+<div class="well">
+<form action=<%=  admin_loadtestdata_path %> >
+<p>Load Test Data
+<p><input type="submit" value="Submit">
+</form>
+</div>

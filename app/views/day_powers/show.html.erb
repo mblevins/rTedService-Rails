@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Day:</b>
+  <%= @day_power.day %>
+</p>
+
+<p>
+  <b>Pgewatts:</b>
+  <%= @day_power.pgeWatts %>
+</p>
+
+<p>
+  <b>Solarwatts:</b>
+  <%= @day_power.solarWatts %>
+</p>
+
+<p>
+  <b>Waterwatts:</b>
+  <%= @day_power.waterWatts %>
+</p>
+
+
+<%= link_to 'Edit', edit_day_power_path(@day_power) %> |
+<%= link_to 'Back', day_powers_path %>

@@ -1,0 +1,25 @@
+<h1>Power by Day</h1>
+
+<table class=table style="width:80%">
+  <tr>
+    <th>Day</th>
+    <th>Pgewatts</th>
+    <th>Solarwatts</th>
+    <th>Waterwatts</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @day_powers.each do |day_power| %>
+  <tr>
+    <td><%= day_power.day %></td>
+    <td><%= day_power.pgeWatts %></td>
+    <td><%= day_power.solarWatts %></td>
+    <td><%= day_power.waterWatts %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @day_hists, :renderer => BootstrapPagination::Rails %>
+

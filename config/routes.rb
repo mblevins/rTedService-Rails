@@ -1,5 +1,8 @@
 RTedServiceRails::Application.routes.draw do
   
+  resources :day_powers
+
+
   get "admin/index"
 
   devise_for :users
@@ -14,6 +17,7 @@ RTedServiceRails::Application.routes.draw do
   resources :solar_img, :only => [:index]
   resources :water_img, :only => [:index]
   resources :admin, :only => [:index]
+  resources :day_powers, :only => [:index, :show]
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
@@ -77,4 +81,6 @@ RTedServiceRails::Application.routes.draw do
   match 'tedpostserver/init/' => 'tedpostserver#init', :via => :post, :defaults => {:format => 'xml'}
   match 'tedpostserver/postdata/' => 'tedpostserver#postdata', :via => :post, :defaults => {:format => 'xml'}
   match 'dayhist_updater/autoupdate' => 'dayhist_updater#autoupdate', :via => :get
+  match 'admin/updateday' => 'admin#updateday', :via => :get
+  match 'admin/loadtestdata' => 'admin#loadtestdata', :via => :get
 end

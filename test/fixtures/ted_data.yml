@@ -1,13 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  mtu: MyString
-  mtype: MyString
-  cumtime: 2013-01-02 15:27:31
-  watts: 1
+  mtu: 1052B6
+  mtype: 2
+  cumtime: 2013-01-02 00:00:10
+  watts: 100000
 
 two:
-  mtu: MyString
-  mtype: MyString
-  cumtime: 2013-01-02 15:27:31
-  watts: 1
+  mtu: 1052B6
+  mtype: 2
+  cumtime: 2013-01-02 00:00:20
+  watts: 120000
+  
+three:
+  mtu: 106248
+  mtype: 1
+  cumtime: 2013-01-02 00:00:10
+  watts: -200000
+
+four:
+    mtu: 106248
+    mtype: 1
+    cumtime: 2013-01-02 00:00:20
+    watts: -230000
+    
+five:
+    mtu: 105BC7
+    mtype: 3
+    cumtime: 2013-01-02 00:00:10
+    watts: 10000
+
+    
+six:
+    mtu: 105BC7
+    mtype: 3
+    cumtime: 2013-01-02 00:00:20
+    watts: 20000
+    
+  
+     

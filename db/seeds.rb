@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create! :name => 'Mike Blevins', :email => 'mike@wabbitinc.com', :password => 'abc789', :password_confirmation => 'abc789'
 
+
 #DayHist.create(day: '2013-01-12', mtu:	'1052B6', watts: '18776')
 #DayHist.create(day: '2013-01-12', mtu:	'106248', watts: '1087')
 #DayHist.create(day: '2013-01-12', mtu:	'105BC7', watts: '1131')

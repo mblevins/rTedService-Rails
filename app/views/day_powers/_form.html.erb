@@ -1,0 +1,33 @@
+<%= form_for(@day_power) do |f| %>
+  <% if @day_power.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@day_power.errors.count, "error") %> prohibited this day_power from being saved:</h2>
+
+      <ul>
+      <% @day_power.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :day %><br />
+    <%= f.date_select :day %>
+  </div>
+  <div class="field">
+    <%= f.label :pgeWatts %><br />
+    <%= f.number_field :pgeWatts %>
+  </div>
+  <div class="field">
+    <%= f.label :solarWatts %><br />
+    <%= f.number_field :solarWatts %>
+  </div>
+  <div class="field">
+    <%= f.label :waterWatts %><br />
+    <%= f.text_field :waterWatts %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,12 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203204724) do
+ActiveRecord::Schema.define(:version => 20130203231453) do
 
   create_table "day_hists", :force => true do |t|
     t.date     "day"
     t.string   "mtu"
     t.integer  "watts"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "day_powers", :force => true do |t|
+    t.date     "day"
+    t.integer  "pgeWatts"
+    t.integer  "solarWatts"
+    t.integer  "waterWatts"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
