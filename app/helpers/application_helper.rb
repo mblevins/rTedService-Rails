@@ -78,7 +78,7 @@ module ApplicationHelper
           when $pge_mtu
             dp.pgeWatts = watts / 1000
           when $solar_mtu
-            dp.solarWatts = - (watts / 1000)
+            dp.solarWatts = watts / 1000
           when $water_mtu
             dp.waterWatts = watts / 1000
           else
