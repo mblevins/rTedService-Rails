@@ -76,12 +76,11 @@ class TedpostserverController < ApplicationController
     end
     
     # update yesterday 
-    
-   # time = Time.now - 60*60*24
-   # day = time.strftime("%Y-%m-%d")
-   # update_day( day )
+    time = Time.now - 60*60*24
+    day = time.strftime("%Y-%m-%d")
+    update_day( day )
      
-     render :nothing => true
+    render :nothing => true
   end
   
 end
