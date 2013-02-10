@@ -8,7 +8,6 @@ RTedServiceRails::Application.routes.draw do
   get "dayhist_updater/tedhist"
   get "hist_updater/autoupdate"
   
-  resources :foo
   resources :home, :only => [:index]
   resources :day_hists, :only => [:index]
   resources :ted_data, :only => [:index]
