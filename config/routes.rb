@@ -1,7 +1,4 @@
 RTedServiceRails::Application.routes.draw do
-  
-  resources :day_powers
-
 
   get "admin/index"
 
@@ -11,13 +8,14 @@ RTedServiceRails::Application.routes.draw do
   get "dayhist_updater/tedhist"
   get "hist_updater/autoupdate"
   
+  resources :foo
   resources :home, :only => [:index]
   resources :day_hists, :only => [:index]
   resources :ted_data, :only => [:index]
   resources :solar_img, :only => [:index]
   resources :water_img, :only => [:index]
   resources :admin, :only => [:index]
-  resources :day_powers, :only => [:index, :show]
+  resources :day_powers, :only => [:index, :show, :destroy]
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"

@@ -21,5 +21,24 @@ class DayPowersController < ApplicationController
       format.json { render json: @day_power }
     end
   end
+  
+  # DELETE /day_powers/1
+  # DELETE /day_powers/1.json
+  def destroy
+  	if ( ! user_signed_in? ) then
+  	  flash[:notice] = "Have to be signed in"
+  	else
+      @foo = DayPower.find(params[:id])
+      @foo.destroy
+    end
+      
+
+
+    respond_to do |format|
+      format.html { redirect_to day_powers_url }
+      format.json { head :no_content }
+    end
+
+  end
 
 end

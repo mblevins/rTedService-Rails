@@ -6,9 +6,9 @@
     <th>Pgewatts</th>
     <th>Solarwatts</th>
     <th>Waterwatts</th>
-    <th></th>
-    <th></th>
-    <th></th>
+	<% if user_signed_in? %>
+	    <th>Operations</th>
+	<% end %>
   </tr>
 
 <% @day_powers.each do |day_power| %>
@@ -17,6 +17,9 @@
     <td><%= day_power.pgeWatts %></td>
     <td><%= day_power.solarWatts %></td>
     <td><%= day_power.waterWatts %></td>
+	<% if user_signed_in? %>
+	    <td><%= link_to 'Destroy', day_power, method: :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>

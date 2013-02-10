@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create! :name => 'Mike Blevins', :email => 'mike@wabbitinc.com', :password => 'abc789', :password_confirmation => 'abc789'
+User.create! :email => 'mike@wabbitinc.com', :password => 'abc78912', :password_confirmation => 'abc78912'
 
 
 #DayHist.create(day: '2013-01-12', mtu:	'1052B6', watts: '18776')
