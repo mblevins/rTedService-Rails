@@ -1,4 +1,6 @@
 class TedpostserverController < ApplicationController
+  
+  include ApplicationHelper
 
   before_filter :set_format
 
