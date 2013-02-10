@@ -23,12 +23,18 @@ module ApplicationHelper
     
     status = ""
     
+    startTime = DateTime.strptime( "#{day}T00:00-08:00", '%Y-%m-%dT%H:%M%z' )
+    endTime = startTime + 1
+    
+    ststr = startTime.to_time.utc.strftime("%F %T %Z")
+    logger.debug("startTime=#{ststr}, endTime=#{endTime}")
+    
     # make sure we have complete data
-    nextDay = Date.parse( day ) + 1
-    tedDatumResult = TedDatum.where("date(cumtime) = ?", nextDay )
+    nextDay = DateTime.parse( day ) + 1
+    tedDatumResult = TedDatum.where("datetime(cumtime) > ?", endTime ).limit(1)
     if (tedDatumResult.length == 0) then
       status = "Not saved, data incomplete for #{day}"
-      logger.debug "update_day: No TedDatum for #{nextDay}"
+      logger.debug "update_day: No TedDatum for #{endTime}"
     end
     
     # See if we have already done this
@@ -51,7 +57,7 @@ module ApplicationHelper
       
       $all_mtus.each do |mtu|
   
-        tedDatumResult = TedDatum.where("date(cumtime) = ? and mtu = ?", day, mtu).order( :cumtime )
+        tedDatumResult = TedDatum.where("datetime(cumtime) > ? and datetime(cumtime) < ? and mtu = ?", startTime, endTime, mtu).order( :cumtime )
 
         t1 = tedDatumResult.first
         if (t1 == nil) then
