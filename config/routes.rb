@@ -15,6 +15,7 @@ RTedServiceRails::Application.routes.draw do
   resources :water_img, :only => [:index]
   resources :admin, :only => [:index]
   resources :day_powers, :only => [:index, :show, :destroy]
+  resources :power_graph, :only => [:index]
   
   post "tedpostserver/init"
   post "tedpostserver/postdata"
