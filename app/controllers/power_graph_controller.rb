@@ -1,14 +1,22 @@
 class PowerGraphController < ApplicationController
   def index
-      @dayPowersResult = DayPower.limit(365).order( "day DESC" )
       
     @graphType = params[:graphType]
     if (@graphType == nil) then
       @graphType = "bar"
-    elsif (@graphType != "time" and @graphType != "bar" and @graphType != "table")
+    end
+    
+    if (@graphType == "time")
+      limit = 365
+    elsif (@graphType == "table")
+      limit = 30
+    else
       # sleazy...
       @graphType = "bar"
+      limit = 7
     end
+    
+    @dayPowersResult = DayPower.limit(limit).order( "day DESC" )
     
     render :template => 'power_graph/index.html.erb'
   end
