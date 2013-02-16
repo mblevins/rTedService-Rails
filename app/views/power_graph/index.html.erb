@@ -1,10 +1,14 @@
  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
   <script type='text/javascript'>
-    google.load('visualization', '1', {'packages':['annotatedtimeline']});
+    google.load('visualization', '1', {'packages':['annotatedtimeline','corechart','table' ]});
     google.setOnLoadCallback(drawChart);
     function drawChart() {
       var data = new google.visualization.DataTable();
+      <% if @graphType == "bar" %>
+      data.addColumn('string', 'Date');
+      <% else %>
       data.addColumn('date', 'Date');
+      <% end %>
       data.addColumn('number', 'PGE');
       data.addColumn('number', 'Solar');
       data.addColumn('number', 'Net');
@@ -12,18 +16,46 @@
       data.addRows([
       <% @dayPowersResult.each do |dp| %>
         
-        [new Date(<%= dp.day.year %>, <%= dp.day.month %>, <%= dp.day.day %>), <%= dp.pgeWatts %>, <%= dp.solarWatts %>, <%= dp.pgeWatts + dp.solarWatts %>, <%= dp.waterWatts %> ],
+        <% if @graphType == "bar" %>
+        ["<%= dp.day.strftime("%m/%d/%Y") %>", <%= dp.pgeWatts %>, <%= dp.solarWatts %>, <%= dp.pgeWatts + dp.solarWatts %>, <%= dp.waterWatts %> ],
+        <% else %>
+        [new Date(<%= dp.day.year %>, <%= dp.day.month - 1 %>, <%= dp.day.day %>), <%= dp.pgeWatts %>, <%= dp.solarWatts %>, <%= dp.pgeWatts + dp.solarWatts %>, <%= dp.waterWatts %> ],
+        <% end %>
 
       <% end %>
       ]);
 
+      <% if @graphType == "bar" %>
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      var options = {
+          vAxis: {title: "Day"},
+          hAxis: {title: "Consumption"},
+          colors: ['red', 'green', 'grey', 'blue']
+      };
+      <% elsif @graphType == "table" %>
+      var chart = new google.visualization.Table(document.getElementById('chart_div'));
+      var options = {};
+      <% elsif @graphType == "time" %>
       var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div'));
       var options = {
         displayAnnotations: false,
         colors: ['red', 'green', 'grey', 'blue']
       };
+      <% end %>
       chart.draw(data, options );
     }
   </script>
 
   <div id='chart_div' style='width: 700px; height: 400px;'></div>
+  <p>&nbsp;<p>&nbsp;
+  <div class="well">
+  <form action=<%= power_graph_index_path %> >
+  <p>Graph Options
+      <select name="graphType">
+        <option value="time" <% if @graphType == "time" %> selected <% end %>>Time</option>
+        <option value="bar" <% if @graphType == "bar" %> selected <% end %>>Bar</option>
+        <option value="table" <% if @graphType == "table" %> selected <% end %>>Table</option>
+      </select>
+      <p><input type="submit" value="Set Options">
+  </form>
+  </div>

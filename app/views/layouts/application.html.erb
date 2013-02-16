@@ -8,8 +8,9 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript"
-      src="http://dygraphs.com/dygraph-combined.js"></script>
+    <link rel="alternate" type="application/rss+xml" 
+      title="RSS" 
+      href=<%= day_hist_rss_index_path %>>
   </head>
   <body>
 	<div class="container-fluid">
@@ -24,12 +25,12 @@
 			<div class="span2">
 				<ul class="nav nav-list">
 					<li><%= link_to "Home", home_index_path  %></li>
-					<li><%= link_to "Daily Records (old)", day_hists_path  %></li>
-					<li><%= link_to "Daily Records (new)", day_powers_path  %></li>
+					<li><%= link_to "Daily Records", power_graph_index_path %></li>
 					<li><%= link_to "Raw Data Records", ted_data_path  %></li>
-					<li><%= link_to "Daily Solar Graph (img)", solar_img_index_path  %></li>
-					<li><%= link_to "Daily Water Graph (img)", water_img_index_path   %></li>
-					<li><%= link_to "Power Graph (interactive)", power_graph_index_path %></li>
+					<li><%= link_to "Daily Records (deprecated)", day_hists_path  %></li>
+					<li><%= link_to "Daily Records (deprecated)", day_powers_path  %></li>
+					<li><%= link_to "Daily Solar Graph (deprecated)", solar_img_index_path  %></li>
+					<li><%= link_to "Daily Water Graph (deprecated)", water_img_index_path   %></li>
 					<li><%= link_to "RSS", day_hist_rss_index_path %></li>
 					<li><%= link_to "Admin", admin_index_path  %>
 					<% if user_signed_in? %>
