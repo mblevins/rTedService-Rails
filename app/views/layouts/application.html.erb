@@ -10,7 +10,7 @@
     <![endif]-->
     <link rel="alternate" type="application/rss+xml" 
       title="RSS" 
-      href=<%= day_hist_rss_index_path %>>
+      href=<%= day_hist_rss_index_url %>>
   </head>
   <body>
 	<div class="container-fluid">
@@ -26,14 +26,16 @@
 				<ul class="nav nav-list">
 					<li><%= link_to "Home", home_index_path  %></li>
 					<li><%= link_to "Daily Records", power_graph_index_path %></li>
-					<li><%= link_to "Raw Data Records", ted_data_path  %></li>
+					<!-- 
 					<li><%= link_to "Daily Records (deprecated)", day_hists_path  %></li>
 					<li><%= link_to "Daily Records (deprecated)", day_powers_path  %></li>
 					<li><%= link_to "Daily Solar Graph (deprecated)", solar_img_index_path  %></li>
 					<li><%= link_to "Daily Water Graph (deprecated)", water_img_index_path   %></li>
+					-->
 					<li><%= link_to "RSS", day_hist_rss_index_path %></li>
-					<li><%= link_to "Admin", admin_index_path  %>
 					<% if user_signed_in? %>
+					    <li><%= link_to "Raw Data Records", ted_data_path  %></li>
+					    <li><%= link_to "Admin", admin_index_path  %>
 					    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %>
 					<% else %>
 					    <li><%= link_to "Login", new_user_session_path  %>
