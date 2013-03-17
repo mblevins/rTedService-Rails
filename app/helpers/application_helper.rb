@@ -59,9 +59,16 @@ module ApplicationHelper
         t1 = tedDatumResult.first
         if (t1 == nil) then
           # nothing to do, but that's not an error
-          dp.pgeWatts = 0
-          dp.solarWatts = 0
-          dp.waterWatts = 0
+          case mtu
+          when $pge_mtu
+            dp.pgeWatts = 0
+          when $solar_mtu
+            dp.solarWatts = 0
+          when $water_mtu
+            dp.waterWatts = 0
+          else
+            logger.warn "unexpected m_type for #{day}, #{mtu}: type=#{t1.mtype}"
+          end
           logger.warn("Nothing to do for #{day} and #{mtu}")
         else
 
